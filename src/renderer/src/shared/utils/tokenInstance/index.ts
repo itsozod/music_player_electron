@@ -6,7 +6,7 @@ export const tokenInstance = {
   },
   getToken: () => {
     try {
-      const token = JSON.parse(localStorage.getItem(USER_TOKEN_KEY_LOCALSTORAGE) as any)
+      const token = JSON.parse(localStorage.getItem(USER_TOKEN_KEY_LOCALSTORAGE) as string)
       return token
     } catch (error) {
       console.error('Failed to parse token:', error)
