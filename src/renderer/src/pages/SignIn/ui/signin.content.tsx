@@ -16,7 +16,7 @@ const Signin = () => {
       gyroControls: false,
       minHeight: 200.0,
       minWidth: 200.0,
-      baseColor: '0xff20ec'
+      baseColor: 0xff20ec
     })
     return () => {
       if (!vantaEffect) vantaEffect.destroy()
