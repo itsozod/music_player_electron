@@ -1,2 +1,2 @@
-import Profile from './ui/profile.content'
+import Profile from './ui/Profile'
 export { Profile }

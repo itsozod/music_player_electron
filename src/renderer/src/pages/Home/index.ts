@@ -1,2 +1,2 @@
-import Home from './ui/home.content'
+import Home from './ui/Home'
 export { Home }
