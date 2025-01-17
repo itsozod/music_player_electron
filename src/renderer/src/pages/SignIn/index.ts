@@ -1,2 +1,2 @@
-import SignIn from './ui/signin.content'
-export { SignIn }
+import Signin from './ui/signin.content'
+export { Signin }
