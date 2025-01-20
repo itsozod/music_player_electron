@@ -1,13 +1,13 @@
 import { Home } from '@renderer/pages/Home'
 import { Profile } from '@renderer/pages/Profile'
 import { Signin } from '@renderer/pages/SignIn'
-import { Layout } from '@renderer/widgets/layout'
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, createHashRouter } from 'react-router-dom'
+import ProtectedLayout from './ProtectedLayout'
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: <ProtectedLayout />,
     children: [
       {
         path: '/',
@@ -19,7 +19,6 @@ const router = createBrowserRouter([
       }
     ]
   },
-
   {
     index: true,
     path: '/signin',

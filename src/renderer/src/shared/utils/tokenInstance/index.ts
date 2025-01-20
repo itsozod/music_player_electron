@@ -5,7 +5,7 @@ export const tokenInstance = {
     localStorage.setItem(USER_TOKEN_KEY_LOCALSTORAGE, token)
   },
   getToken: () => {
-    localStorage.getItem(USER_TOKEN_KEY_LOCALSTORAGE)
+    return localStorage.getItem(USER_TOKEN_KEY_LOCALSTORAGE)
   },
   clearToken: () => {
     localStorage.removeItem(USER_TOKEN_KEY_LOCALSTORAGE)
