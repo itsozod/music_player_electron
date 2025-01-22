@@ -3,10 +3,9 @@ import { Layout } from '@renderer/widgets/layout'
 import { Navigate } from 'react-router-dom'
 
 const ProtectedLayout = () => {
-  const token = tokenInstance.getToken()
-  console.log('token:', token)
+  const { getToken } = tokenInstance
 
-  return !token ? <Navigate to={'/signin'} replace /> : <Layout />
+  return getToken() ? <Layout /> : <Navigate to={'/signin'} replace />
 }
 
 export default ProtectedLayout

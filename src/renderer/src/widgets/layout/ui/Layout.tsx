@@ -8,7 +8,9 @@ const Layout = () => {
       <AppSidebar />
       <main>
         <SidebarTrigger />
-        <Outlet />
+        <div className="flex flex-col min-h-[100vh]">
+          <Outlet />
+        </div>
       </main>
     </SidebarProvider>
   )

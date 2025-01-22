@@ -1,12 +1,15 @@
 import { RouterProvider } from 'react-router-dom'
 import router from './router/router'
 import SWRProvider from './swr'
+import { ThemeProvider } from './theme/ThemeProvider'
 
 const Providers = () => {
   return (
-    <SWRProvider>
-      <RouterProvider router={router} />
-    </SWRProvider>
+    <ThemeProvider defaultTheme="system" storageKey='vite-ui-theme"'>
+      <SWRProvider>
+        <RouterProvider router={router} />
+      </SWRProvider>
+    </ThemeProvider>
   )
 }
 export default Providers
