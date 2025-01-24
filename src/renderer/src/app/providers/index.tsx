@@ -5,7 +5,7 @@ import { ThemeProvider } from './theme/ThemeProvider'
 
 const Providers = () => {
   return (
-    <ThemeProvider defaultTheme="system" storageKey='vite-ui-theme"'>
+    <ThemeProvider>
       <SWRProvider>
         <RouterProvider router={router} />
       </SWRProvider>
