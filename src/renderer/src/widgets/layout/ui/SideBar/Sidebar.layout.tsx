@@ -34,7 +34,6 @@ const items = [
 
 export function AppSidebar() {
   const { data: profile, isLoading } = useSWR('me')
-  const { data: topTracks } = useSWR('me/top/tracks?time_range=long_term&limit=5')
 
   return (
     <Sidebar variant="floating" collapsible="icon">
