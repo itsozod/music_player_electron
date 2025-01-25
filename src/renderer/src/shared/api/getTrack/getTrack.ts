@@ -3,16 +3,15 @@ export const getTrack = async (id: string) => {
   const options = {
     method: 'GET',
     headers: {
-      'x-rapidapi-key': 'cc34b8b11amsh308e357e7fd7e7bp1b226fjsn941b7b0ae69c',
-      'x-rapidapi-host': 'spotify23.p.rapidapi.com'
+      'x-rapidapi-key': `${import.meta.env.VITE_BASE_URL_DEVELOPMENT_RAPID_API_KEY}`,
+      'x-rapidapi-host': `${import.meta.env.VITE_BASE_URL_DEVELOPMENT_RAPID_API_HOST}`
     }
   }
 
   try {
     const response = await fetch(url, options)
     const result = await response.json()
-    const preview = result?.tracks?.map((track) => track?.preview_url)
-    return preview
+    return result
   } catch (error) {
     console.error(error)
   }
