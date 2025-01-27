@@ -17,6 +17,7 @@ import { DropdownMenu, DropdownMenuTrigger } from '@renderer/components/ui/dropd
 import useSWR from 'swr'
 import { Link } from 'react-router-dom'
 import { ProfileImg, ProfileInfo } from '@renderer/features'
+import { useEffect } from 'react'
 
 // Menu items.
 const items = [
@@ -34,6 +35,28 @@ const items = [
 
 export function AppSidebar() {
   const { data: profile, isLoading } = useSWR('me')
+
+  useEffect(() => {
+    const getTrack = async () => {
+      const url = 'https://spotify23.p.rapidapi.com/tracks/?ids=7EiZI6JVHllARrX9PUvAdX'
+      const options = {
+        method: 'GET',
+        headers: {
+          'x-rapidapi-key': 'cc34b8b11amsh308e357e7fd7e7bp1b226fjsn941b7b0ae69c',
+          'x-rapidapi-host': 'spotify23.p.rapidapi.com'
+        }
+      }
+
+      try {
+        const response = await fetch(url, options)
+        const result = await response.json()
+        console.log(result)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    getTrack()
+  }, [])
 
   return (
     <Sidebar variant="floating" collapsible="icon">
