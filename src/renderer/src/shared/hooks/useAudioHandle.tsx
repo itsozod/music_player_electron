@@ -5,6 +5,8 @@ const useAudioHandle = () => {
   const { track } = useAudioStore()
   const audioRef = useRef<HTMLAudioElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [duration, setDuration] = useState(0)
+  const [currentTime, setCurrentTime] = useState(0)
 
   const handlePlay = () => {
     audioRef.current?.play()
@@ -16,12 +18,23 @@ const useAudioHandle = () => {
   }
 
   useEffect(() => {
-    if (track.length) {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0
       handlePlay()
     }
   }, [track])
 
-  return { audioRef, isPlaying, handlePlay, handlePause }
+  return {
+    audioRef,
+    isPlaying,
+    duration,
+    setDuration,
+    currentTime,
+    setCurrentTime,
+    setIsPlaying,
+    handlePlay,
+    handlePause
+  }
 }
 
 export default useAudioHandle
