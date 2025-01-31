@@ -56,6 +56,8 @@ const SpotifyAuth = () => {
     if (code) {
       auth({ code })
         .then((res) => {
+          console.log(res)
+
           tokenInstance.setToken(res.access_token)
           navigate('/')
         })

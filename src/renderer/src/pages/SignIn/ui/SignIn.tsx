@@ -1,4 +1,4 @@
-import { Card, CardContent, CardFooter } from '@renderer/components/ui/card'
+import { Card, CardContent, CardFooter } from '@renderer/shared/components/ui/card'
 import SpotifyLogo from '@renderer/shared/assets/spotify_web.png'
 import SpotifyAuth from './SpotifyAuth'
 import VantaWave from './VantaWave'

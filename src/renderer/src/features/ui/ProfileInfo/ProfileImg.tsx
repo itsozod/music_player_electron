@@ -1,4 +1,4 @@
-import { Skeleton } from '@renderer/components/ui/skeleton'
+import { Skeleton } from '@renderer/shared/components/ui/skeleton'
 
 const ProfileImg = ({ isLoading, profile }: { isLoading: boolean; profile: any }) => {
   return (

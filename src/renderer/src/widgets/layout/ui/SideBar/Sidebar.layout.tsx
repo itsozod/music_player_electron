@@ -11,9 +11,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem
-} from '@renderer/components/ui/sidebar'
+} from '@renderer/shared/components/ui/sidebar'
 
-import { DropdownMenu, DropdownMenuTrigger } from '@renderer/components/ui/dropdown-menu'
+import { DropdownMenu, DropdownMenuTrigger } from '@renderer/shared/components/ui/dropdown-menu'
 import useSWR from 'swr'
 import { Link } from 'react-router-dom'
 import { ProfileImg, ProfileInfo } from '@renderer/features'

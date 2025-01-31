@@ -1,4 +1,4 @@
-import { Button } from '@renderer/components/ui/button'
+import { Button } from '@renderer/shared/components/ui/button'
 import useAudioHandle from '@renderer/shared/hooks/useAudioHandle'
 import { useAudioStore } from '@renderer/shared/store'
 import { Pause, Play } from 'lucide-react'
@@ -15,6 +15,16 @@ const Footer = () => {
     duration,
     setDuration
   } = useAudioHandle()
+
+  const parseTime = (time: number) => {
+    time %= 3600
+    let minutes = Math.floor(time / 60)
+    let secs = Math.floor(time % 60)
+    return [minutes, secs]
+      .map((v) => (v < 10 ? '0' + v : v))
+      .filter((v, i) => v !== '00' || i > 0)
+      .join(':')
+  }
 
   if (!track.length) return
 
@@ -39,10 +49,12 @@ const Footer = () => {
               <audio
                 ref={audioRef}
                 onLoadedData={(e) => {
-                  setDuration(e.currentTarget.duration?.toFixed(2))
+                  const parsed = parseTime(e.currentTarget.duration)
+                  setDuration(parsed)
                 }}
                 onTimeUpdate={(e) => {
-                  setCurrentTime(e.currentTarget.currentTime?.toFixed(2))
+                  const parsed = parseTime(e.currentTarget.currentTime)
+                  setCurrentTime(parsed)
                 }}
                 src={item.preview}
               ></audio>

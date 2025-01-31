@@ -10,9 +10,9 @@ import {
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger
-} from '@renderer/components/ui/dropdown-menu'
+} from '@renderer/shared/components/ui/dropdown-menu'
 import { useTheme } from '@renderer/app/providers/theme/ThemeProvider'
-import { DropdownMenuShortcut } from '@renderer/components/ui/dropdown-menu'
+import { DropdownMenuShortcut } from '@renderer/shared/components/ui/dropdown-menu'
 import { tokenInstance } from '@renderer/shared/utils'
 import { LogOut, UserPlus } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
