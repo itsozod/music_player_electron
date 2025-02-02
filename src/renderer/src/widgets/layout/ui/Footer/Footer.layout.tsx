@@ -8,8 +8,7 @@ const Footer = () => {
   const {
     audioRef,
     isPlaying,
-    handlePause,
-    handlePlay,
+    handlePlayPause,
     currentTime,
     setCurrentTime,
     duration,
@@ -26,7 +25,7 @@ const Footer = () => {
       .join(':')
   }
 
-  if (!track.length) return
+  if (!track?.length) return
 
   return (
     <footer className="sticky w-[100%] left-0 bottom-2 mb-2 p-4 backdrop-blur-[15px] bg-[rgba(0,0,0,0.1)]">
@@ -37,7 +36,7 @@ const Footer = () => {
               <img src={item?.img} alt="Song image" className="rounded-[50%]" />
               <div className="flex flex-col gap-1">
                 <h1>{item?.name}</h1>
-                <p>{item.artist}</p>
+                <p>{item?.artist}</p>
               </div>
             </div>
             <div className="flex flex-col flex-2">
@@ -47,6 +46,7 @@ const Footer = () => {
               </div>
               <input min="0" max={duration} value={currentTime} type="range" />
               <audio
+                autoPlay
                 ref={audioRef}
                 onLoadedData={(e) => {
                   const parsed = parseTime(e.currentTarget.duration)
@@ -57,10 +57,8 @@ const Footer = () => {
                   setCurrentTime(parsed)
                 }}
                 src={item.preview}
-              ></audio>
-              <Button onClick={isPlaying ? handlePause : handlePlay}>
-                {isPlaying ? <Pause /> : <Play />}
-              </Button>
+              />
+              <Button onClick={handlePlayPause}>{isPlaying ? <Pause /> : <Play />}</Button>
             </div>
           </div>
         )

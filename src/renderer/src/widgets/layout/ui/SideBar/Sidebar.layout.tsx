@@ -28,9 +28,9 @@ export function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <Link to={'/'}>
+              <Link className="hover:text-[hsl(var(--primary))]" to={'/'}>
                 <Music />
-                <span className="text-[1rem]">Music Player</span>
+                <span className="text-[1.1rem]">Music Player</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -38,15 +38,15 @@ export function AppSidebar() {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-[1rem]">Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <Link to={item.url}>
+                    <Link className="hover:text-[hsl(var(--primary))]" to={item.url}>
                       <item.icon />
-                      <span>{item.title}</span>
+                      <span className="text-[1.1rem]">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
