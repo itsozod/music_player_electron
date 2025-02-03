@@ -12,7 +12,8 @@ const Footer = () => {
     currentTime,
     setCurrentTime,
     duration,
-    setDuration
+    setDuration,
+    setIsPlaying
   } = useAudioHandle()
 
   const parseTime = (time: number) => {
@@ -55,6 +56,9 @@ const Footer = () => {
                 onTimeUpdate={(e) => {
                   const parsed = parseTime(e.currentTarget.currentTime)
                   setCurrentTime(parsed)
+                }}
+                onEnded={() => {
+                  setIsPlaying(false)
                 }}
                 src={item.preview}
               />

@@ -1,7 +1,8 @@
 import { Card, CardContent, CardFooter } from '@renderer/shared/components/ui/card'
 import { useNavigate } from 'react-router-dom'
+import * as I from '@renderer/shared/types'
 
-const PlaylistCard = ({ playlist }: { playlist: any }) => {
+const PlaylistCard = ({ playlist }: { playlist: I.PlaylistItem }) => {
   const navigate = useNavigate()
   return (
     <Card
@@ -18,7 +19,7 @@ const PlaylistCard = ({ playlist }: { playlist: any }) => {
         />
       </CardContent>
       <CardFooter className="mt-auto">
-        <p className="text-[1rem]">{playlist?.name}</p>
+        <p className="text-[1rem]">{playlist.name}</p>
       </CardFooter>
     </Card>
   )

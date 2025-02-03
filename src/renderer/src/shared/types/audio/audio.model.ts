@@ -21,7 +21,7 @@ export interface Track {
   }
   artists: Artist[]
 }
-interface Image {
+export interface Image {
   url: string
 }
 interface Artist {

@@ -2,21 +2,20 @@ import { Button } from '@renderer/shared/components/ui/button'
 import { Card, CardContent, CardFooter } from '@renderer/shared/components/ui/card'
 import { Pause, PlayIcon } from 'lucide-react'
 import * as I from '@renderer/shared/types'
-import { useAudioStore } from '@renderer/shared/store'
 
 const TrackCard = ({
   track,
   selectedId,
+  isPlaying,
   handleTrack
 }: {
   track: I.Track
   selectedId: string
+  isPlaying: boolean
   handleTrack: (id: string) => void
 }) => {
-  const { isPlaying } = useAudioStore()
-
   return (
-    <Card className="group flex flex-col cursor-pointer shadow-none hover:bg-indigo-50 dark:hover:bg-indigo-950">
+    <Card className=" relative group flex flex-col cursor-pointer shadow-none hover:bg-indigo-50 dark:hover:bg-indigo-950">
       <CardContent className="p-3">
         <img
           width={300}
@@ -29,7 +28,7 @@ const TrackCard = ({
         <p> {track?.name}</p>
         <Button
           size={'icon'}
-          className="hidden p-2 rounded-[50%] group-hover:flex"
+          className="absolute right-1 hidden p-2 rounded-[50%] group-hover:flex items-center"
           onClick={() => handleTrack(track.id)}
         >
           {isPlaying && selectedId === track.id ? <Pause /> : <PlayIcon />}
