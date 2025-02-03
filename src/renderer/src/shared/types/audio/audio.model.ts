@@ -5,6 +5,10 @@ export interface AudioInfo {
   artist: string
 }
 
+export interface TopTracks {
+  items: Track[]
+}
+
 export interface TrackResp {
   tracks: Track[]
 }
