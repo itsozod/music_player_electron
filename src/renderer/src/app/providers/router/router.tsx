@@ -4,6 +4,7 @@ import { Signin } from '@renderer/pages/SignIn'
 import { createBrowserRouter } from 'react-router-dom'
 import ProtectedLayout from './ProtectedLayout'
 import { Playlists } from '@renderer/pages/Playlists'
+import { PlaylistSongs } from '@renderer/pages/PlaylistSongs'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: '/playlists',
         element: <Playlists />
+      },
+      {
+        path: '/playlists/:id',
+        element: <PlaylistSongs />
       }
     ]
   },
