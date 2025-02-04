@@ -21,9 +21,7 @@ const PlaylistSongs = () => {
             item={item}
             currentPlaying={selectedId}
             isPlaying={isPlaying}
-            handleTrack={() => {
-              handleTrack(item.track.id)
-            }}
+            handleTrack={handleTrack}
           />
         )
       })}

@@ -24,9 +24,9 @@ const PlaylistSongCard = ({
         alt="Playlist img"
       />
       <div
-        style={{
-          color: currentPlaying === item.track.id ? 'green' : 'white'
-        }}
+        className={`${
+          currentPlaying === item.track.id ? 'text-green-500' : 'text-black dark:text-white'
+        }`}
       >
         {item?.track?.name}
       </div>

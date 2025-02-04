@@ -28,7 +28,7 @@ export function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <Link className="hover:text-[hsl(var(--primary))]" to={'/'}>
+              <Link className="hover:text-[green]" to={'/'}>
                 <Music />
                 <span className="text-[1.1rem]">Music Player</span>
               </Link>
@@ -44,7 +44,7 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <Link className="hover:text-[hsl(var(--primary))]" to={item.url}>
+                    <Link className="hover:text-[green]" to={item.url}>
                       <item.icon />
                       <span className="text-[1.1rem]">{item.title}</span>
                     </Link>

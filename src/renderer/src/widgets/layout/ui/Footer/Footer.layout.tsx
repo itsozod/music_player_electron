@@ -2,9 +2,11 @@ import { Button } from '@renderer/shared/components/ui/button'
 import useAudioHandle from '@renderer/shared/hooks/useAudioHandle'
 import { useAudioStore } from '@renderer/shared/store'
 import { Pause, Play } from 'lucide-react'
+import { useRef } from 'react'
 
 const Footer = () => {
   const { track } = useAudioStore()
+  const percentageRef = useRef<HTMLInputElement>(null)
   const {
     audioRef,
     isPlaying,
@@ -26,6 +28,10 @@ const Footer = () => {
       .join(':')
   }
 
+  const handleChange = () => {
+    audioRef.current.currentTime = percentageRef.current.value
+  }
+
   if (!track?.length) return
 
   return (
@@ -45,7 +51,14 @@ const Footer = () => {
                 <p>{currentTime}</p>
                 <p>{duration}</p>
               </div>
-              <input min="0" max={duration} value={currentTime} type="range" />
+              <input
+                min="0"
+                ref={percentageRef}
+                max={duration}
+                value={currentTime}
+                type="range"
+                onChange={handleChange}
+              />
               <audio
                 autoPlay
                 ref={audioRef}
