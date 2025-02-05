@@ -15,7 +15,7 @@ const TrackCard = ({
   handleTrack: (id: string) => void
 }) => {
   return (
-    <Card className=" relative group flex flex-col cursor-pointer shadow-none hover:bg-indigo-50 dark:hover:bg-indigo-950">
+    <Card className="relative group flex flex-col cursor-pointer shadow-none hover:bg-indigo-50 dark:hover:bg-indigo-950">
       <CardContent className="p-3">
         <img
           width={300}

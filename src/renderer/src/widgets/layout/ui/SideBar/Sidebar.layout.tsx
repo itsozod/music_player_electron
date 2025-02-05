@@ -15,20 +15,21 @@ import {
 
 import { DropdownMenu, DropdownMenuTrigger } from '@renderer/shared/components/ui/dropdown-menu'
 import useSWR from 'swr'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { ProfileImg, ProfileInfo } from '@renderer/features'
 import { items } from '@renderer/shared/constants/sidebar.items'
 
 export function AppSidebar() {
   const { data: profile, isLoading } = useSWR('me')
+  const location = useLocation()
 
   return (
     <Sidebar variant="floating" collapsible="icon">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link className="hover:text-[green]" to={'/'}>
+            <SidebarMenuButton asChild className="hover:text-[hsl(var(--primary))]">
+              <Link to={'/'}>
                 <Music />
                 <span className="text-[1.1rem]">Music Player</span>
               </Link>
@@ -43,8 +44,11 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <Link className="hover:text-[green]" to={item.url}>
+                  <SidebarMenuButton
+                    asChild
+                    className={`hover:text-[hsl(var(--primary))] ${item.url === location.pathname ? 'text-[hsl(var(--primary))]' : 'text-black dark:text-white'}`}
+                  >
+                    <Link to={item.url}>
                       <item.icon />
                       <span className="text-[1.1rem]">{item.title}</span>
                     </Link>

@@ -1,4 +1,4 @@
-import { Home, Inbox, PlayIcon } from 'lucide-react'
+import { Home, PlayIcon } from 'lucide-react'
 
 // Menu items.
 export const items = [
@@ -6,11 +6,6 @@ export const items = [
     title: 'Home',
     url: '/',
     icon: Home
-  },
-  {
-    title: 'Profile',
-    url: '/profile',
-    icon: Inbox
   },
   {
     title: 'Playlists',

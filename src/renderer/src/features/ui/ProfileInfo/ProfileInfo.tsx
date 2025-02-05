@@ -14,7 +14,7 @@ import {
 import { useTheme } from '@renderer/app/providers/theme/ThemeProvider'
 import { DropdownMenuShortcut } from '@renderer/shared/components/ui/dropdown-menu'
 import { tokenInstance } from '@renderer/shared/utils'
-import { LogOut, UserPlus } from 'lucide-react'
+import { LogOut, User2Icon, UserPlus } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
 const ProfileInfo = () => {
@@ -25,6 +25,10 @@ const ProfileInfo = () => {
       <DropdownMenuLabel>My Account</DropdownMenuLabel>
       <DropdownMenuGroup>
         <DropdownMenuSub>
+          <DropdownMenuItem onClick={() => navigate('/profile')}>
+            <User2Icon />
+            <span>Profile</span>
+          </DropdownMenuItem>
           <DropdownMenuSubTrigger>
             <UserPlus />
             <span>Theme</span>

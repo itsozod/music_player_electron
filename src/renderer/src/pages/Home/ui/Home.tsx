@@ -34,7 +34,7 @@ const Home = () => {
     <div className="flex flex-col gap-1 p-2">
       <h1 className="text-[1.7rem]">{`${now}, ${me?.display_name ?? ''}`}</h1>
       <h1 className="text-[1.5rem]">Your top tracks</h1>
-      <div className="grid gap-3 grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))]">
+      <div className="grid gap-3 grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))]">
         {data?.items?.map((item) => {
           return (
             <TrackCard
