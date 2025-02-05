@@ -6,6 +6,7 @@ const useAudioHandle = () => {
   const [cache, setCache] = useState(new Map())
   const { audioRef: audioEl, isPlaying, setTrack, setIsPlaying, setAudioRef } = useAudioStore()
   const audioRef = useRef<HTMLAudioElement>(null)
+  const percentageRef = useRef<HTMLInputElement>(null)
   const [duration, setDuration] = useState('00')
   const [currentTime, setCurrentTime] = useState('00')
   const [selectedId, setSelectedId] = useState('')
@@ -18,7 +19,7 @@ const useAudioHandle = () => {
     setCache(cache.set(id, response.tracks))
     return response.tracks
   }
-  
+
   const handlePlay = () => {
     audioRef.current?.play()
     audioEl?.play()
@@ -57,6 +58,7 @@ const useAudioHandle = () => {
 
   return {
     audioRef,
+    percentageRef,
     isPlaying,
     selectedId,
     duration,

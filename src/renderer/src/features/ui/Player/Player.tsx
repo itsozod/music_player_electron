@@ -2,12 +2,11 @@ import { Button } from '@renderer/shared/components/ui/button'
 import useAudioHandle from '@renderer/shared/hooks/useAudioHandle'
 import { parseTime } from '@renderer/shared/utils'
 import { Pause, Play } from 'lucide-react'
-import { useRef } from 'react'
 
 const Player = ({ song }: { song: string }) => {
-  const percentageRef = useRef<HTMLInputElement>(null)
   const {
     audioRef,
+    percentageRef,
     isPlaying,
     handlePlayPause,
     currentTime,
@@ -30,6 +29,7 @@ const Player = ({ song }: { song: string }) => {
         <p>{duration}</p>
       </div>
       <input
+        className="accent-[green]"
         min="0"
         ref={percentageRef}
         max={duration}

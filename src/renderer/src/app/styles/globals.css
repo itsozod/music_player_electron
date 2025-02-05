@@ -150,3 +150,7 @@ ul {
     transform: rotate(360deg);
   }
 }
+
+/* input[type='range']::before {
+  background: #f50;
+} */
