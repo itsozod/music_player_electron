@@ -6,7 +6,7 @@ export const addTrack = async (url: string, args = {}) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Basic ${getToken()}`
+      Authorization: `Bearer ${getToken()}`
     },
     body: JSON.stringify(args)
   })

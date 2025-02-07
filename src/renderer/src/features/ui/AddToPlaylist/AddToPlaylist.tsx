@@ -29,14 +29,12 @@ const AddToPlaylist = ({
   )
 
   const handleAddTrack = async (playlist_id: string, position: number, uris: string) => {
-    console.log(playlist_id, position, uris)
-
-    await addTrack(`https://accounts.spotify.com/v1/playlists/${playlist_id}/tracks?uris=${uris}`, {
-      playlist_id: playlist_id,
-      position: position,
-      uris: [uris]
+    await addTrack(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks?uris=${uris}`, {
+      uris: [uris],
+      position: position
+    }).then(() => {
+      setOpen(false)
     })
-    setOpen(false)
   }
 
   if (isLoading) return <Loader />

@@ -2,6 +2,7 @@ const scopes = [
   'streaming',
   'user-read-email',
   'user-library-read',
+  'user-library-modify',
   'playlist-modify-public',
   'playlist-modify-private',
   'playlist-read-private',
