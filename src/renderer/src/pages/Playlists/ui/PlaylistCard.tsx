@@ -1,13 +1,11 @@
 import { Card, CardContent, CardFooter } from '@renderer/shared/components/ui/card'
-import { useNavigate } from 'react-router-dom'
 import * as I from '@renderer/shared/types'
 
-const PlaylistCard = ({ playlist }: { playlist: I.PlaylistItem }) => {
-  const navigate = useNavigate()
+const PlaylistCard = ({ playlist, onClick }: { playlist: I.PlaylistItem; onClick: () => void }) => {
   return (
     <Card
-      className="flex flex-col cursor-pointer shadow-none hover:bg-indigo-50 dark:hover:bg-indigo-950"
-      onClick={() => navigate(`/playlists/${playlist.id}`)}
+      className="flex flex-col justify-center items-center cursor-pointer shadow-none hover:bg-indigo-50 dark:hover:bg-indigo-950"
+      onClick={onClick}
     >
       <CardContent className="p-3">
         <img

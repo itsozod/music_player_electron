@@ -17,6 +17,7 @@ export interface PlaylistSongItem {
   track: {
     id: string
     name: string
+    uri: string
     album: {
       images: I.Image[]
     }

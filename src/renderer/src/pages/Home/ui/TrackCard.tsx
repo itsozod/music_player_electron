@@ -15,12 +15,12 @@ const TrackCard = ({
   handleTrack: (id: string) => void
 }) => {
   return (
-    <Card className="relative group flex flex-col cursor-pointer shadow-none hover:bg-indigo-50 dark:hover:bg-indigo-950">
+    <Card className="w-full relative group flex flex-col justify-center items-center cursor-pointer shadow-none hover:bg-indigo-50 dark:hover:bg-indigo-950">
       <CardContent className="p-3">
         <img
           width={300}
           height={300}
-          className="aspect-square rounded-[24px]"
+          className="rounded-[24px]"
           src={track?.album?.images?.[1]?.url}
         />
       </CardContent>
