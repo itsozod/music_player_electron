@@ -24,9 +24,11 @@ const AddToPlaylist = ({
 }) => {
   const { songUri } = useAudioStore()
   const { data } = useSWR('me')
-  const { data: playlists, isLoading } = useSWR<I.Playlist>(
-    data?.id ? `users/${data.id}/playlists` : null
-  )
+  const {
+    data: playlists,
+    isLoading,
+    mutate
+  } = useSWR<I.Playlist>(data?.id ? `users/${data.id}/playlists` : null)
 
   const handleAddTrack = async (playlist_id: string, position: number, uris: string) => {
     await addTrack(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks?uris=${uris}`, {
@@ -35,6 +37,7 @@ const AddToPlaylist = ({
     }).then(() => {
       setOpen(false)
     })
+    await mutate()
   }
 
   if (isLoading) return <Loader />
@@ -45,7 +48,7 @@ const AddToPlaylist = ({
         <DrawerHeader>
           <DrawerTitle>Add track to playlist</DrawerTitle>
         </DrawerHeader>
-        <div className="flex flex-col items-center max-h-[500px] overflow-auto">
+        <div className="grid gap-3 grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] max-h-[600px] overflow-auto">
           {playlists?.items?.map((item) => {
             return (
               <PlaylistCard
