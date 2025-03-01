@@ -8,7 +8,7 @@ import {
   DrawerTitle
 } from '@renderer/shared/components/ui/drawer'
 import { Dispatch, SetStateAction } from 'react'
-import useSWR, { useSWRConfig } from 'swr'
+import useSWR from 'swr'
 import * as I from '@renderer/shared/types'
 import Loader from '@renderer/shared/ui/Loader'
 import PlaylistCard from '@renderer/pages/Playlists/ui/PlaylistCard'
@@ -27,11 +27,12 @@ const AddToPlaylist = ({
   playlist_id: string
   uri: string
 }) => {
-  const { mutate } = useSWRConfig()
   const { data } = useSWR('me')
-  const { data: playlists, isLoading } = useSWR<I.Playlist>(
-    data?.id ? `users/${data.id}/playlists` : null
-  )
+  const {
+    data: playlists,
+    isLoading,
+    mutate
+  } = useSWR<I.Playlist>(data?.id ? `users/${data.id}/playlists` : null)
   const { trigger: handleAddTrack } = useSWRMutation(
     `playlists/${playlist_id}/tracks?uris=${uri}`,
     addTrack
@@ -55,10 +56,9 @@ const AddToPlaylist = ({
                   await handleAddTrack({
                     uris: [uri],
                     position: 0
-                  }).then(() => {
-                    setOpen(false)
                   })
-                  await mutate(`users/${data.id}/playlists`)
+
+                  // await mutate()
                 }}
               />
             )

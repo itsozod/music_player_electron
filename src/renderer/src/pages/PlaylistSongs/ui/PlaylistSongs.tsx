@@ -2,7 +2,7 @@ import * as I from '@renderer/shared/types'
 import { useState } from 'react'
 import { Button } from '@renderer/shared/components/ui/button'
 import { useAudioStore } from '@renderer/shared/store'
-import { EllipsisVertical, Music, User2Icon } from 'lucide-react'
+import { EllipsisVertical, Music } from 'lucide-react'
 import { AddToPlaylist } from '@renderer/features'
 import { useParams } from 'react-router-dom'
 import useSWR from 'swr'
@@ -13,7 +13,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuTrigger
 } from '@renderer/shared/components/ui/dropdown-menu'
 
@@ -32,7 +31,7 @@ const PlaylistSongs = () => {
       <div className="flex flex-col gap-2">
         {data?.tracks?.items?.map((item) => {
           return (
-            <div className=" w-full flex justify-between items-center gap-2">
+            <div className="w-full flex justify-between items-center gap-2">
               <PlaylistSongCard
                 key={item.track.id}
                 item={item}
