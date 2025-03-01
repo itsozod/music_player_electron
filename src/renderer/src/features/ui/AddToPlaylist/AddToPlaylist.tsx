@@ -14,17 +14,14 @@ import Loader from '@renderer/shared/ui/Loader'
 import PlaylistCard from '@renderer/pages/Playlists/ui/PlaylistCard'
 import { addTrack } from '@renderer/shared/api/addTrack/addTrack'
 import { X } from 'lucide-react'
-import useSWRMutation from 'swr/mutation'
 
 const AddToPlaylist = ({
   open,
   setOpen,
-  playlist_id,
   uri
 }: {
   open: boolean
   setOpen: Dispatch<SetStateAction<boolean>>
-  playlist_id: string
   uri: string
 }) => {
   const { data } = useSWR('me')
@@ -33,10 +30,6 @@ const AddToPlaylist = ({
     isLoading,
     mutate
   } = useSWR<I.Playlist>(data?.id ? `users/${data.id}/playlists` : null)
-  const { trigger: handleAddTrack } = useSWRMutation(
-    `playlists/${playlist_id}/tracks?uris=${uri}`,
-    addTrack
-  )
 
   if (isLoading) return <Loader />
 
@@ -53,12 +46,13 @@ const AddToPlaylist = ({
                 key={item.id}
                 playlist={item}
                 onClick={async () => {
-                  await handleAddTrack({
+                  await addTrack(`playlists/${item.id}/tracks?uris=${uri}`, {
                     uris: [uri],
                     position: 0
+                  }).then(() => {
+                    setOpen(false)
                   })
-
-                  // await mutate()
+                  await mutate()
                 }}
               />
             )

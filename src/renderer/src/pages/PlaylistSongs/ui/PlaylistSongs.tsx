@@ -21,7 +21,6 @@ const PlaylistSongs = () => {
   const { data, isLoading } = useSWR<I.PlaylistSongsById>(id ? `playlists/${id}` : null)
   const { handleTrack, isPlaying, selectedId } = useAudioHandle()
   const { songUri, setSongUri } = useAudioStore()
-  const [playlistId, setPlaylistId] = useState('')
   const [open, setOpen] = useState(false)
 
   if (isLoading) return <Loader />
@@ -50,7 +49,6 @@ const PlaylistSongs = () => {
                   onClick={() => {
                     setOpen(true)
                     setSongUri(item.track.uri)
-                    setPlaylistId(item.track.id)
                   }}
                 >
                   <DropdownMenuItem>
@@ -63,7 +61,7 @@ const PlaylistSongs = () => {
           )
         })}
       </div>
-      <AddToPlaylist open={open} setOpen={setOpen} playlist_id={playlistId} uri={songUri} />
+      <AddToPlaylist open={open} setOpen={setOpen} uri={songUri} />
     </>
   )
 }
