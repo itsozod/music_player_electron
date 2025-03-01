@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    --loader-background: 0 0% 100%;
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
@@ -35,6 +36,7 @@
   }
 
   .dark {
+    --loader-background: 291 100% 100%;
     --background: 224 71% 4%;
     --foreground: 213 31% 91%;
     --muted: 223 47% 11%;
@@ -123,7 +125,7 @@ ul {
 .loader {
   width: 48px;
   height: 48px;
-  border: 2px solid #fff;
+  border: 2px solid burlywood;
   border-radius: 50%;
   display: inline-block;
   position: relative;
@@ -151,6 +153,13 @@ ul {
   }
 }
 
-/* input[type='range']::before {
-  background: #f50;
-} */
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

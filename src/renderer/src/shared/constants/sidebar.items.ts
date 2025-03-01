@@ -1,15 +1,16 @@
-import { Home, PlayIcon } from 'lucide-react'
+import { HomeIcon, PlayIcon } from 'lucide-react'
 
 // Menu items.
-export const items = [
-  {
+
+export const pathData = {
+  home: {
     title: 'Home',
-    url: '/',
-    icon: Home
+    path: '/',
+    icon: HomeIcon
   },
-  {
+  playlists: {
     title: 'Playlists',
-    url: '/playlists',
+    path: '/playlists',
     icon: PlayIcon
   }
-]
+}

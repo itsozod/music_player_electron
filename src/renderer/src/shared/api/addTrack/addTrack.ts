@@ -1,20 +1,8 @@
-import { tokenInstance } from '@renderer/shared/utils'
+import { fetcher } from '@renderer/app/providers/swr/fetcher'
 
-export const addTrack = async (url: string, args = {}) => {
-  const { getToken } = tokenInstance
-  const response = await fetch(url, {
+export const addTrack = async (url: string, { arg = {} }) => {
+  return fetcher(url, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${getToken()}`
-    },
-    body: JSON.stringify(args)
+    body: JSON.stringify(arg)
   })
-
-  if (!response.ok) {
-    throw new Error('Failed to fetch token')
-  }
-
-  const data = await response.json()
-  return data
 }

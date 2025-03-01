@@ -12,23 +12,24 @@ import {
   SidebarMenuButton,
   SidebarMenuItem
 } from '@renderer/shared/components/ui/sidebar'
-
 import { DropdownMenu, DropdownMenuTrigger } from '@renderer/shared/components/ui/dropdown-menu'
 import useSWR from 'swr'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { ProfileImg, ProfileInfo } from '@renderer/features'
-import { items } from '@renderer/shared/constants/sidebar.items'
+import { pathData } from '@renderer/shared/constants/sidebar.items'
+const { home, playlists } = pathData
 
 export function AppSidebar() {
   const { data: profile, isLoading } = useSWR('me')
   const location = useLocation()
+  const { id } = useParams()
 
   return (
     <Sidebar variant="floating" collapsible="icon">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild className="hover:text-[hsl(var(--primary))]">
+            <SidebarMenuButton asChild>
               <Link to={'/'}>
                 <Music />
                 <span className="text-[1.1rem]">Music Player</span>
@@ -42,19 +43,28 @@ export function AppSidebar() {
           <SidebarGroupLabel className="text-[1rem]">Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    className={`hover:text-[hsl(var(--primary))] ${item.url === location.pathname ? 'text-[hsl(var(--primary))]' : 'text-black dark:text-white'}`}
-                  >
-                    <Link to={item.url}>
-                      <item.icon />
-                      <span className="text-[1.1rem]">{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  className={`${home.path === location.pathname ? 'text-[hsl(var(--primary))]' : 'text-black dark:text-white'} hover:text-[hsl(var(--primary))]`}
+                >
+                  <Link to={home.path}>
+                    <home.icon />
+                    <span className="text-[1.1rem]">{home.title}</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  className={`${playlists.path === location.pathname || location.pathname.includes(id as string) ? 'text-[hsl(var(--primary))]' : 'text-black dark:text-white'} hover:text-[hsl(var(--primary))]`}
+                >
+                  <Link to={playlists.path}>
+                    <playlists.icon />
+                    <span className="text-[1.1rem]">{playlists.title}</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

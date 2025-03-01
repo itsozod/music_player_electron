@@ -16,7 +16,11 @@ export const fetcher = async (url: string, options: RequestInit = {}) => {
   }
   if (!response.ok) {
     const errorResp = await response.json()
-    throw new Error(`${errorResp?.message || response.statusText}`)
+    throw new Error(`${errorResp?.error.message || response.statusText}`)
   }
+
+  console.log('fetcher opt', headers)
+  console.log('fetcher opt', url)
+
   return await response.json()
 }

@@ -1,19 +1,28 @@
-import useAudioHandle from '@renderer/shared/hooks/useAudioHandle'
-import Loader from '@renderer/shared/ui/Loader'
-import { useParams } from 'react-router-dom'
-import useSWR from 'swr'
-import PlaylistSongCard from './PlaylistSongCard'
 import * as I from '@renderer/shared/types'
 import { useState } from 'react'
-import AddToPlaylist from '@renderer/features/ui/AddToPlaylist/AddToPlaylist'
 import { Button } from '@renderer/shared/components/ui/button'
 import { useAudioStore } from '@renderer/shared/store'
+import { EllipsisVertical, Music, User2Icon } from 'lucide-react'
+import { AddToPlaylist } from '@renderer/features'
+import { useParams } from 'react-router-dom'
+import useSWR from 'swr'
+import useAudioHandle from '@renderer/shared/hooks/useAudioHandle'
+import Loader from '@renderer/shared/ui/Loader'
+import PlaylistSongCard from './PlaylistSongCard'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger
+} from '@renderer/shared/components/ui/dropdown-menu'
 
 const PlaylistSongs = () => {
   const { id } = useParams()
   const { data, isLoading } = useSWR<I.PlaylistSongsById>(id ? `playlists/${id}` : null)
   const { handleTrack, isPlaying, selectedId } = useAudioHandle()
-  const { setSongUri } = useAudioStore()
+  const { songUri, setSongUri } = useAudioStore()
+  const [playlistId, setPlaylistId] = useState('')
   const [open, setOpen] = useState(false)
 
   if (isLoading) return <Loader />
@@ -31,20 +40,31 @@ const PlaylistSongs = () => {
                 isPlaying={isPlaying}
                 handleTrack={handleTrack}
               />
-              <Button
-                onClick={() => {
-                  setOpen(true)
-                  setSongUri(item.track.uri)
-                }}
-                size={'icon'}
-              >
-                Add
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button size={'icon'} variant={'secondary'}>
+                    <EllipsisVertical />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  className="w-56"
+                  onClick={() => {
+                    setOpen(true)
+                    setSongUri(item.track.uri)
+                    setPlaylistId(item.track.id)
+                  }}
+                >
+                  <DropdownMenuItem>
+                    <Music />
+                    <span>Add to playlist</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           )
         })}
       </div>
-      <AddToPlaylist open={open} setOpen={setOpen} />
+      <AddToPlaylist open={open} setOpen={setOpen} playlist_id={playlistId} uri={songUri} />
     </>
   )
 }
