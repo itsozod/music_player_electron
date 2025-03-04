@@ -1,5 +1,4 @@
 import { Music } from 'lucide-react'
-
 import {
   Sidebar,
   SidebarContent,
@@ -15,8 +14,9 @@ import {
 import { DropdownMenu, DropdownMenuTrigger } from '@renderer/shared/components/ui/dropdown-menu'
 import useSWR from 'swr'
 import { Link, useLocation, useParams } from 'react-router-dom'
-import { ProfileImg, ProfileInfo } from '@renderer/features'
+import { ProfileImg } from '@renderer/features'
 import { pathData } from '@renderer/shared/constants/sidebar.items'
+import ProfileInfo from '@renderer/pages/Profile/ui/ProfileInfo/ProfileInfo'
 const { home, playlists } = pathData
 
 export function AppSidebar() {

@@ -1,5 +1,4 @@
-import ProfileInfo from './ProfileInfo/ProfileInfo'
-import ProfileImg from './ProfileInfo/ProfileImg'
+import ProfileImg from '../../pages/Profile/ui/ProfileInfo/ProfileImg'
 import Player from './Player/Player'
 import AddToPlaylist from './AddToPlaylist/AddToPlaylist'
-export { ProfileInfo, ProfileImg, Player, AddToPlaylist }
+export { ProfileImg, Player, AddToPlaylist }

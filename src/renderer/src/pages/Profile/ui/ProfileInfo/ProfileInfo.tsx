@@ -11,7 +11,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger
 } from '@renderer/shared/components/ui/dropdown-menu'
-import { useTheme } from '@renderer/app/providers/theme/ThemeProvider'
+import { useTheme } from '@renderer/app/providers/theme'
 import { DropdownMenuShortcut } from '@renderer/shared/components/ui/dropdown-menu'
 import { tokenInstance } from '@renderer/shared/utils'
 import { LogOut, User2Icon, UserPlus } from 'lucide-react'
